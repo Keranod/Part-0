@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser-server GET httpsstudies.cs.helsinki.fiexampleappspa
+    activate server
+    server--browser HTML document
+    deactivate server
+
+    browser-server GET httpsstudies.cs.helsinki.fiexampleappmain.css
+    activate server
+    server--browser the css file
+    deactivate server
+
+    browser-server GET httpsstudies.cs.helsinki.fiexampleappspa.js
+    activate server
+    server--browser the JavaScript file
+    deactivate server
+
+    Note right of browser JavaScript renders notes list which triggers GET call to the server for data.json containing notes, also renders form responsible for adding new notes
+
+    browser-server GET httpsstudies.cs.helsinki.fiexampleappdata.json
+    Note right of browser JavaScript popluates notes list with notes from data.json
+    activate server
+    server--browser [{ content HTML is easy, date 2023-09-19 }, ..., { content Hello test, date 2023-09-19 } ]
+    deactivate server

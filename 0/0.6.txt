@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: User types in note "Guten Tag" and presses Save
+    Note right of browser: Browser rerenders notes with new note pushed to the notes list
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    Note right of browser: JavaScript after Save was pressed sends POST to that path and pushes header "Content-type" of "application/json" type
